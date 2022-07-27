@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #c3cfd9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
+  color: #e8833a;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  /*Tela 2*/
+  .hours-poster > h1 {
+    font-size: 20px;
+    color: #293845;
+    margin-bottom: 20px;
+  }
+
+  .hours-poster {
+    margin: 20px 0;
+  }
+
+  .hour-box {
+    display: flex;
+    gap: 10px;
+  }
+
+  .hour-box-button {
+    background-color: #e8833a;
+    border-radius: 4px;
+    color: #fff;
+    border: 1px solid #e8833a;
+    padding: 10px;
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #9eadba;
+    height: 117px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+  }
+
+  .footer-poster {
+    width: 64px;
+    height: 90px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 30px;
+  }
+
+  .footer-poster > img {
+    width: 50px;
+    height: 72px;
+  }
+
+  .footer > p {
+    font-size: 26px;
+  }
+}

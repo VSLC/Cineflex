@@ -26,9 +26,10 @@ header {
 
 @media (max-width: 600px) {
     .films {
+        width: 500px;
         margin-top: 20px;
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 15px;
     }
 
@@ -42,6 +43,7 @@ header {
         height: 360px;
         background-color: #fff;
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         border-radius: 5px;
@@ -240,10 +242,68 @@ header {
         height: 117px;
         display: flex;
         align-items: center;
-        justify-content: flex-start;
+        justify-content: center;
         gap: 10px;
-
     }
+
+    .footer-third-page p {
+        font-size: 30px;
+    }
+
+    /*Tela 4*/
+
+    .order-status {
+        margin-top: 120px;
+        color: #247A6B;
+        font-size: 24px;
+        font-weight: bold;
+        line-height: 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .film-section,
+    .tickets,
+    .buyers {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 20px 100px 0 0;
+    }
+
+    .film-section>h2,
+    .tickets>h2,
+    .buyers>h2 {
+        font-size: 24px;
+        font-weight: bold;
+        color: #293845;
+        margin-bottom: 10px;
+    }
+
+    .film-section>p,
+    .tickets>p,
+    .buyers>p {
+        font-size: 24px;
+        color: #293845;
+        margin-bottom: 10px;
+    }
+
+    .home {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .home>button {
+        background-color: #E8833A;
+        border: 1px solid #E8833A;
+        color: #fff;
+        padding: 15px 40px;
+        border-radius: 5px;
+        font-size: 18px;
+    }
+
 
     .hidden {
         display: none;

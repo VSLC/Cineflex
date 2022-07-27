@@ -1,0 +1,251 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background-color: #c3cfd9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 34px;
+    color: #E8833A;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+@media (max-width: 600px) {
+    .films {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .film-container {
+        display: flex;
+        gap: 0 30px;
+    }
+
+    .poster {
+        width: 240px;
+        height: 360px;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 5px;
+        box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, 0.1);
+
+    }
+
+    .initial-message {
+        margin-top: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .initial-message h1 {
+        font-size: 40px;
+        color: #293845;
+
+    }
+
+    .poster>img {
+        width: 200px;
+        height: 300px;
+    }
+
+
+    /*Tela 2*/
+    .hours-poster>h1 {
+        font-size: 20px;
+        color: #293845;
+        margin-bottom: 20px;
+    }
+
+    .hours-poster {
+        margin: 20px 0;
+    }
+
+    .hour-box {
+        display: flex;
+        gap: 10px;
+    }
+
+    .hour-box-button {
+        background-color: #E8833A;
+        border-radius: 4px;
+        color: #fff;
+        border: 1px solid #E8833A;
+        padding: 10px;
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #9EADBA;
+        height: 117px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+
+    }
+
+    .footer-poster {
+        width: 64px;
+        height: 90px;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 30px;
+    }
+
+    .footer-poster>img {
+        width: 50px;
+        height: 72px;
+    }
+
+    .footer>p {
+        font-size: 26px;
+    }
+
+    /*Tela 3*/
+    .third-page {
+        margin: 10px auto;
+        overflow-y: scroll;
+    }
+
+    .reservation-box {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .reservation-chair {
+        display: flex;
+        gap: 15px;
+        margin: 10px 0;
+        padding: 0 20px;
+    }
+
+    .reservation-explanation {
+        display: flex;
+        justify-content: center;
+        gap: 75px;
+        margin: 32px 0 30px 0;
+    }
+
+    .reservation-item {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: center;
+
+    }
+
+    .reservation-selected {
+        background-color: #8DD7CF;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    .reservation-available {
+        background-color: #C3CFD9;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    .reservation-unavailable {
+        background-color: #FBE192;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+    }
+
+    .chair {
+        background-color: #C3CFD9;
+        border-radius: 20px;
+        padding: 10px;
+    }
+
+    .reservation-form {
+        margin-left: 30px;
+    }
+
+    .reservation-form-item {
+        margin: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        font-size: 18px;
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 450px;
+        height: 51px;
+        border-radius: 5px;
+        border: 1px solid #D5D5D5;
+        background-color: #fff;
+        padding-left: 20px;
+    }
+
+    ::placeholder {
+        color: #AFAFAF;
+        font-size: 18px;
+    }
+
+    .reservation-button-class {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+
+    .reservation-button {
+        background: #E8833A;
+        color: #FFFFFF;
+        border-radius: 5px;
+        border: 1px solid #E8833A;
+        padding: 20px 40px;
+        margin-bottom: 300px;
+        font-size: 18px;
+    }
+
+    .footer-third-page {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: #9EADBA;
+        height: 117px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 10px;
+
+    }
+
+    .hidden {
+        display: none;
+    }
+}

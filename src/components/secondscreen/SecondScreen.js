@@ -1,9 +1,9 @@
 import "./style.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 
-const Footer = ({title,src}) => {
+const Footer = ({ title, src }) => {
   return (
     <div class="footer">
       <div class="footer-poster">
@@ -14,7 +14,8 @@ const Footer = ({title,src}) => {
   );
 };
 
-const Hours = ({ weekday, date, showtimes }) => {
+const Hours = ({ weekday, date, showtimes,idSessao }) => {
+  console.log(`idSessao: ${idSessao}`)
   return (
     <div class="hours-poster">
       <h1>
@@ -22,19 +23,21 @@ const Hours = ({ weekday, date, showtimes }) => {
       </h1>
       <div class="hour-box">
         {showtimes.map((element) => (
-          <button class="hour-box-button" key={element.id}>
-            {element.name}
-          </button>
+          <Link to={`/assentos/${idSessao}`}>
+            <button class="hour-box-button" key={element.id}>
+              {element.name}
+            </button>
+          </Link>
         ))}
       </div>
-      <Footer/>
-            
+      <Footer />
     </div>
   );
 };
 
 const SecondScreen = (props) => {
   let { idFilme } = useParams();
+
   const [days, setDays] = useState([]);
   const [footer, setFooter] = useState({});
   idFilme = idFilme.replace(":", "");
@@ -62,18 +65,21 @@ const SecondScreen = (props) => {
         {days.map(
           (element) => (
             console.log(element.showtimes.name),
+            console.log(`id-sessao:${element.id}`),
             (
               <Hours
                 weekday={element.weekday}
                 date={element.date}
                 showtimes={element.showtimes}
+                idSessao = {element.id}
               />
             )
           )
         )}
-        <Footer title = {footer.title} src={footer.posterURL}/>
+        <Footer title={footer.title} src={footer.posterURL} />
       </div>
     </div>
+
   );
 };
 

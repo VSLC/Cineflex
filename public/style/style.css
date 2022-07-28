@@ -25,6 +25,7 @@ header {
 }
 
 @media (max-width: 600px) {
+    /*Tela 1*/
     .films {
         width: 500px;
         margin-top: 20px;

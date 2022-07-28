@@ -1,10 +1,9 @@
+
+
 const Header = () => {
-    return (
-        <header>
-            Cineflex
-        </header>
-    );
+  return (
+      <header>Cineflex</header>
+  );
+};
 
-}
-
-export default Header
+export default Header;

@@ -2,6 +2,18 @@ import "./style.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+
+const Footer = ({title,src}) => {
+  return (
+    <div class="footer">
+      <div class="footer-poster">
+        <img src={src} alt="film" />
+      </div>
+      <p>{title}</p>
+    </div>
+  );
+};
+
 const Hours = ({ weekday, date, showtimes }) => {
   return (
     <div class="hours-poster">
@@ -9,17 +21,14 @@ const Hours = ({ weekday, date, showtimes }) => {
         {weekday} - {date}
       </h1>
       <div class="hour-box">
-      {showtimes.map((element) => 
-         <button class="hour-box-button" key={element.id}>
-             {element.name}
-         </button>)}   
+        {showtimes.map((element) => (
+          <button class="hour-box-button" key={element.id}>
+            {element.name}
+          </button>
+        ))}
       </div>
-      <div class="footer">
-        <div class="footer-poster">
-          <img src="/imgs/image.png" alt="film" />
-        </div>
-        <p>Enola Holmes</p>
-      </div>
+      <Footer/>
+            
     </div>
   );
 };
@@ -27,6 +36,7 @@ const Hours = ({ weekday, date, showtimes }) => {
 const SecondScreen = (props) => {
   let { idFilme } = useParams();
   const [days, setDays] = useState([]);
+  const [footer, setFooter] = useState({});
   idFilme = idFilme.replace(":", "");
 
   useEffect(() => {
@@ -35,10 +45,13 @@ const SecondScreen = (props) => {
     );
     promise.then((response) => {
       setDays(response.data.days);
+      setFooter(response.data);
     });
   }, []);
 
-  console.log(days)
+  console.log(footer);
+
+  console.log(days);
 
   return (
     <div class="second-page">
@@ -58,6 +71,7 @@ const SecondScreen = (props) => {
             )
           )
         )}
+        <Footer title = {footer.title} src={footer.posterURL}/>
       </div>
     </div>
   );

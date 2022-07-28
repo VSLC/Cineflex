@@ -32,8 +32,12 @@ header {
     margin-bottom: 20px;
   }
 
+  .hours {
+    margin-bottom: 150px;
+  }
+
   .hours-poster {
-    margin: 20px 0;
+    margin: 50px 0;
   }
 
   .hour-box {

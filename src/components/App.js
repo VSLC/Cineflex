@@ -1,7 +1,7 @@
-import InitialScreen from "./InitialScreen"
-import SecondScreen from "./SecondScreen"
-import ThirdScreen from "./ThirdScreen"
-import FourthScreen from "./FourthScreen"
+import InitialScreen from "./initialscreen/InitialScreen"
+import SecondScreen from "./secondscreen/SecondScreen"
+import ThirdScreen from "./thirdscreen/ThirdScreen"
+import FourthScreen from "./fourthscreen/FourthScreen"
 import Header from "./Header"
 
 import { BrowserRouter, Routes, Route } from "react-router-dom"

@@ -1,31 +1,42 @@
 import "./style.css";
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import axios from "axios"
+import { useState, useEffect } from "react";
+import axios from "axios";
 
-const FooterThird = () => {
+const FooterThird = (props) => {
   return (
     <div class="footer-third-page">
       <div class="footer-poster">
         <img src="/imgs/image.png" alt="film" />
       </div>
       <div class="footer-third-informa">
-        <p>Enola Holmes <br/> Quinta-feira - 15:00 </p>
+        <p>
+          Enola Holmes <br /> Quinta-feira - 19:00
+        </p>
       </div>
     </div>
   );
 };
+
 const ThirdScreen = () => {
-  const {idSessao} = useParams();
-  console.log(idSessao)
+  //Component logic
+  const { idSessao } = useParams();
+  const [objectResponse,setObjectResponse] = useState();
+  console.log(idSessao);
 
   useEffect(() => {
-      const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`)
-      promise.then((response) => {
-          console.log(response.data);
-      })
-      promise.catch(console.log("Error"))
-  },[]);
+    const promise = axios.get(
+      `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`
+    );
+    promise.then((response) => {
+        setObjectResponse(response.data);
+    });
+  }, []);
+
+  const arrayFinal = [...objectResponse]
+
+  console.log(objectResponse)
+  //Component UI
   return (
     <div class="third-page">
       <div class="initial-message">
@@ -122,7 +133,7 @@ const ThirdScreen = () => {
           <div class="reservation-button-class">
             <button class="reservation-button">Reservar assento(s)</button>
           </div>
-          <FooterThird/>
+          <FooterThird />
         </div>
       </div>
     </div>

@@ -15,7 +15,6 @@ const Footer = ({ title, src }) => {
 };
 
 const Hours = ({ weekday, date, showtimes,idSessao }) => {
-  console.log(`idSessao: ${idSessao}`)
   return (
     <div class="hours-poster">
       <h1>
@@ -23,7 +22,7 @@ const Hours = ({ weekday, date, showtimes,idSessao }) => {
       </h1>
       <div class="hour-box">
         {showtimes.map((element) => (
-          <Link to={`/assentos/${idSessao}`}>
+          <Link to={`/assentos/${element.id}`}>
             <button class="hour-box-button" key={element.id}>
               {element.name}
             </button>
@@ -52,9 +51,6 @@ const SecondScreen = (props) => {
     });
   }, []);
 
-  console.log(footer);
-
-  console.log(days);
 
   return (
     <div class="second-page">
@@ -64,14 +60,11 @@ const SecondScreen = (props) => {
       <div class="hours">
         {days.map(
           (element) => (
-            console.log(element.showtimes.name),
-            console.log(`id-sessao:${element.id}`),
             (
               <Hours
                 weekday={element.weekday}
                 date={element.date}
                 showtimes={element.showtimes}
-                idSessao = {element.id}
               />
             )
           )

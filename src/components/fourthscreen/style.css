@@ -1,0 +1,60 @@
+/*Tela 4*/
+
+@media (max-width: 600px) {
+  /*Tela 4*/
+  .order-status {
+    margin-top: 120px;
+    color: #247a6b;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .film-section,
+  .tickets,
+  .buyers {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 20px 100px 0 0;
+  }
+
+  .film-section > h2,
+  .tickets > h2,
+  .buyers > h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #293845;
+    margin-bottom: 10px;
+  }
+
+  .film-section > p,
+  .tickets > p,
+  .buyers > p {
+    font-size: 24px;
+    color: #293845;
+    margin-bottom: 10px;
+  }
+
+  .home {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .home > button {
+    background-color: #e8833a;
+    border: 1px solid #e8833a;
+    color: #fff;
+    padding: 15px 40px;
+    border-radius: 5px;
+    font-size: 18px;
+  }
+
+  .hidden {
+    display: none;
+  }
+}

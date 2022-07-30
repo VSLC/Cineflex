@@ -3,18 +3,18 @@
   .third-page {
     margin: 10px auto;
     overflow-y: scroll;
-  }
-
-  .reservation-box {
     display: flex;
     flex-direction: column;
+    align-items:center;
   }
 
+ 
+
   .reservation-chair {
-    display: flex;
-    gap: 15px;
     margin: 10px 0;
-    padding: 0 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px 20px;
   }
 
   .reservation-explanation {
@@ -31,31 +31,46 @@
     align-items: center;
   }
 
+  .chair {
+    background-color: #c3cfd9;
+    border-radius: 50%;
+    padding: 10px;
+  }
+
+  .chair.false {
+    background-color: #fbe192;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .reservation-selected {
     background-color: #8dd7cf;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .reservation-available {
     background-color: #c3cfd9;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
+    padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .reservation-unavailable {
     background-color: #fbe192;
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-  }
-
-  .chair {
-    background-color: #c3cfd9;
-    border-radius: 20px;
     padding: 10px;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .reservation-form {
@@ -80,6 +95,7 @@
     border: 1px solid #d5d5d5;
     background-color: #fff;
     padding-left: 20px;
+    margin-bottom: 30px;
   }
 
   ::placeholder {
@@ -112,7 +128,7 @@
     height: 117px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 10px;
   }
 

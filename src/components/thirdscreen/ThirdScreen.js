@@ -1,18 +1,57 @@
 import "./style.css";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
 const FooterThird = (props) => {
   return (
-    <div class="footer-third-page">
-      <div class="footer-poster">
-        <img src="/imgs/image.png" alt="film" />
+    <div className="footer-third-page">
+      <div className="footer-poster">
+        <img src={props.posterurl} alt="film" />
       </div>
-      <div class="footer-third-informa">
+      <div className="footer-third-informa">
         <p>
-          Enola Holmes <br /> Quinta-feira - 19:00
+          {props.title}
+          {props.weekday} <br /> Quinta-feira - {props.hour}
         </p>
+      </div>
+    </div>
+  );
+};
+
+const Chair = ({ free, number, seats }) => {
+  const [bench, setBench] = useState(free);
+
+  const selectSeat = () => {
+    if (bench === false) {
+      alert("Esse assento não está disponível");
+    } else if (bench === "reservation-selected") {
+      setBench(true);
+      seats[number - 1].isAvailable = "reservation-selected";
+    } else {
+      setBench("reservation-selected");
+      seats[number - 1].isAvailable = "reservation-selected";
+    }
+  };
+
+  return (
+    <div className="reservation-box">
+      <div className="reservation-chair">
+        {parseInt(number) < 10 ? (
+          <div
+            className={`chair ${bench} `}
+            onClick={() => selectSeat(bench, number)}
+          >
+            0{number}
+          </div>
+        ) : (
+          <div
+            className={`chair ${bench}`}
+            onClick={() => selectSeat(bench, number)}
+          >
+            {number}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -21,121 +60,127 @@ const FooterThird = (props) => {
 const ThirdScreen = () => {
   //Component logic
   const { idSessao } = useParams();
-  const [objectResponse,setObjectResponse] = useState();
-  console.log(idSessao);
+  const [objectResponse, setObjectResponse] = useState([]);
+  const [objectResponse2, setObjectResponse2] = useState([]);
+  const [seats, setSeats] = useState([]);
+  const [name, setName] = useState("");
+  const [cpf, setCpf] = useState("");
+  let navigate = useNavigate();
 
   useEffect(() => {
     const promise = axios.get(
       `https://mock-api.driven.com.br/api/v7/cineflex/showtimes/${idSessao}/seats`
     );
     promise.then((response) => {
-        setObjectResponse(response.data);
+      setObjectResponse(response.data.movie);
+      setObjectResponse2(response.data);
+      setSeats(response.data.seats);
     });
   }, []);
 
-  const arrayFinal = [...objectResponse]
 
-  console.log(objectResponse)
+
+
+  const reserveSeat = (e) => {
+    e.preventDefault();
+    let dataClient = {};
+
+    let arrayIdSelected = seats
+      .filter((seat) => {
+        return seat.isAvailable === "reservation-selected";
+      })
+      .map((seat) => {
+        return seat.id;
+      });
+
+
+    dataClient = {
+      ids: arrayIdSelected,
+      name: name,
+      cpf: cpf,
+      filmName: objectResponse.title,
+      filmHour: objectResponse2.name,
+      filmDate: objectResponse2.day.date,
+    };
+
+
+    const send = axios.post(
+      "https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many",
+      dataClient
+    );
+    send.then(navigate("/sucesso", { state: dataClient }));
+  };
+
   //Component UI
   return (
-    <div class="third-page">
-      <div class="initial-message">
+    <div className="third-page">
+      <div className="initial-message">
         <h1>Selecione o(s) assento(s)</h1>
       </div>
-      <div class="reservation">
-        <div class="reservation-poster">
-          <div class="reservation-box">
-            <div class="reservation-chair">
-              <div class="chair">01</div>
-              <div class="chair">02</div>
-              <div class="chair">03</div>
-              <div class="chair">04</div>
-              <div class="chair">05</div>
-              <div class="chair">06</div>
-              <div class="chair">07</div>
-              <div class="chair">08</div>
-              <div class="chair">09</div>
-              <div class="chair">10</div>
-            </div>
-            <div class="reservation-chair">
-              <div class="chair">11</div>
-              <div class="chair">12</div>
-              <div class="chair">13</div>
-              <div class="chair">14</div>
-              <div class="chair">15</div>
-              <div class="chair">16</div>
-              <div class="chair">17</div>
-              <div class="chair">18</div>
-              <div class="chair">19</div>
-              <div class="chair">20</div>
-            </div>
-            <div class="reservation-chair">
-              <div class="chair">21</div>
-              <div class="chair">22</div>
-              <div class="chair">23</div>
-              <div class="chair">24</div>
-              <div class="chair">25</div>
-              <div class="chair">26</div>
-              <div class="chair">27</div>
-              <div class="chair">28</div>
-              <div class="chair">29</div>
-              <div class="chair">30</div>
-            </div>
-            <div class="reservation-chair">
-              <div class="chair">31</div>
-              <div class="chair">32</div>
-              <div class="chair">33</div>
-              <div class="chair">34</div>
-              <div class="chair">35</div>
-              <div class="chair">36</div>
-              <div class="chair">37</div>
-              <div class="chair">38</div>
-              <div class="chair">39</div>
-              <div class="chair">40</div>
-            </div>
-            <div class="reservation-chair">
-              <div class="chair">41</div>
-              <div class="chair">42</div>
-              <div class="chair">43</div>
-              <div class="chair">44</div>
-              <div class="chair">45</div>
-              <div class="chair">46</div>
-              <div class="chair">47</div>
-              <div class="chair">48</div>
-              <div class="chair">49</div>
-              <div class="chair">50</div>
-            </div>
+      <div className="reservation">
+        <div className="reservation-poster">
+          <div className="reservation-chair">
+            {seats.map((bench) => {
+              return (
+                <Chair
+                  number={bench.name}
+                  free={bench.isAvailable}
+                  seats={seats}
+                  key={bench.id}
+                />
+              );
+            })}
           </div>
-          <div class="reservation-explanation">
-            <div class="reservation-item">
-              <div class="reservation-selected"></div>
+          <div className="reservation-explanation">
+            <div className="reservation-item">
+              <div className="reservation-selected"></div>
               <p>Selecionado</p>
             </div>
-            <div class="reservation-item">
-              <div class="reservation-available"></div>
+            <div className="reservation-item">
+              <div className="reservation-available"></div>
               <p>Disponível</p>
             </div>
-            <div class="reservation-item">
-              <div class="reservation-unavailable"></div>
+            <div className="reservation-item">
+              <div className="reservation-unavailable"></div>
               <p>Indisponível</p>
             </div>
           </div>
-          <div class="reservation-form">
-            <form class="reservation-form-item" action="">
-              <label for="name">Nome do comprador:</label>
-              <input type="text" placeholder="Digite seu nome..." />
-            </form>
-            <form class="reservation-form-item" action="">
-              <label for="name">CPF do comprador:</label>
-              <input type="text" placeholder="Digite seu CPF..." />
-            </form>
-          </div>
-          <div class="reservation-button-class">
-            <button class="reservation-button">Reservar assento(s)</button>
-          </div>
-          <FooterThird />
         </div>
       </div>
+      <div className="reservation-form">
+        <form className="reservation-form-item" onSubmit={reserveSeat}>
+          <label for="name">Nome do comprador:</label>
+          <input
+            type="text"
+            value={name}
+            placeholder="Digite seu nome..."
+            onChange={(event) => {
+              setName(event.target.value);
+            }}
+            required
+          />
+
+          <label for="name">CPF do comprador:</label>
+          <input
+            type="text"
+            value={cpf}
+            placeholder="Digite seu CPF..."
+            onChange={(event) => {
+              setCpf(event.target.value);
+            }}
+            required
+          />
+          <div className="reservation-button-class">
+            <button className="reservation-button">Reservar assento(s)</button>
+          </div>
+        </form>
+      </div>
+
+      <FooterThird
+        title={objectResponse.title}
+        posterurl={objectResponse.posterURL}
+        hour={objectResponse2.name}
+      />
     </div>
   );
 };

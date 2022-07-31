@@ -14,7 +14,7 @@ const Footer = ({ title, src }) => {
   );
 };
 
-const Hours = ({ weekday, date, showtimes, idSessao }) => {
+const Hours = ({ weekday, date, showtimes }) => {
   return (
     <div className="hours-poster">
       <h1>

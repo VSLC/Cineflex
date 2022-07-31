@@ -37,8 +37,8 @@ const InitialScreen = () => {
           <h1>Selecione o filme</h1>
         </div>
         <div class="films">
-          {films.map((element) => (
-            <Poster src={element.posterURL} id={element.id} />
+          {films.map((element,index) => (
+            <Poster key={index} src={element.posterURL} id={element.id} />
           ))}
         </div>
       </div>

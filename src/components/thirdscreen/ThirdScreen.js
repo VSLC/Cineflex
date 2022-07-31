@@ -166,6 +166,7 @@ const ThirdScreen = () => {
           <input
             type="text"
             value={cpf}
+            pattern="([0-9]{2}[\.]?[0-9]{3}[\.]?[0-9]{3}[\/]?[0-9]{4}[-]?[0-9]{2})|([0-9]{3}[\.]?[0-9]{3}[\.]?[0-9]{3}[-]?[0-9]{2})"
             placeholder="Digite seu CPF..."
             onChange={(event) => {
               setCpf(event.target.value);

@@ -1,3 +1,28 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  background-color: #c3cfd9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 34px;
+  color: #e8833a;
+  text-transform: uppercase;
+  font-weight: 400;
+}
 /*Tela 4*/
 
 @media (max-width: 600px) {
@@ -45,13 +70,14 @@
     justify-content: center;
   }
 
-  .home > button {
+  .home-button {
     background-color: #e8833a;
     border: 1px solid #e8833a;
     color: #fff;
     padding: 15px 40px;
     border-radius: 5px;
     font-size: 18px;
+    outline: none;
   }
 
   .hidden {

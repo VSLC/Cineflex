@@ -1,3 +1,4 @@
+
 import "./style.css";
 import { Link, useLocation } from "react-router-dom";
 
@@ -36,7 +37,7 @@ const FourthScreen = () => {
 
       <Link to="/">
         <div className="home">
-          <button>Voltar para home</button>
+          <button className="home-button">Voltar para home</button>
         </div>
       </Link>
     </div>

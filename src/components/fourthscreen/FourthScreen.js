@@ -1,7 +1,10 @@
 import "./style.css";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 
 const FourthScreen = () => {
+  const {state} = useLocation();
+  const {name,cpf,filmName,filmHour,filmDate} = state
+  console.log(state)
   return (
     <div className="fourth-screen">
       <div className="order-status">
@@ -12,8 +15,8 @@ const FourthScreen = () => {
 
       <div className="film-section">
         <h2>Filme e sessão</h2>
-        <p>Enola Holmes</p>
-        <p>24/06/2021 15:00</p>
+        <p>{filmName}</p>
+        <p>{filmDate} - {filmHour}</p>
       </div>
 
       <div className="tickets">
@@ -24,8 +27,8 @@ const FourthScreen = () => {
 
       <div className="buyers">
         <h2>Comprador</h2>
-        <p>Nome: João da Silva Sauro</p>
-        <p>CPF: 121.456.789.-10</p>
+        <p>Nome: {name}</p>
+        <p>CPF: {cpf}</p>
       </div>
 
       <Link to="/">

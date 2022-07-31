@@ -43,7 +43,7 @@ const SecondScreen = (props) => {
 
   useEffect(() => {
     const promise = axios.get(
-      `https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`
+      `https://mock-api.driven.com.br/api/v7/cineflex/movies/${idFilme}/showtimes`
     );
     promise.then((response) => {
       setDays(response.data.days);

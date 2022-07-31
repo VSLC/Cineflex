@@ -1,10 +1,10 @@
 import "./style.css";
-import { Link,useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const FourthScreen = () => {
-  const {state} = useLocation();
-  const {name,cpf,filmSeats,filmName,filmHour,filmDate} = state
-  console.log(state)
+  const { state } = useLocation();
+  const { name, cpf, filmSeats, filmName, filmHour, filmDate } = state;
+  console.log(state);
   return (
     <div className="fourth-screen">
       <div className="order-status">
@@ -16,13 +16,15 @@ const FourthScreen = () => {
       <div className="film-section">
         <h2>Filme e sessão</h2>
         <p>{filmName}</p>
-        <p>{filmDate} - {filmHour}</p>
+        <p>
+          {filmDate} - {filmHour}
+        </p>
       </div>
 
       <div className="tickets">
         <h2> Ingressos</h2>
-        {filmSeats.map((seat)=> {
-          return <p>Assento {seat}</p>
+        {filmSeats.map((seat) => {
+          return <p>Assento {seat}</p>;
         })}
       </div>
 

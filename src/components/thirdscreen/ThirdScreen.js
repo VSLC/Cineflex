@@ -3,16 +3,16 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const FooterThird = (props) => {
+const FooterThird = ({ title,weekday, hour, posterurl }) => {
   return (
     <div className="footer-third-page">
       <div className="footer-poster">
-        <img src={props.posterurl} alt="film" />
+        <img src={posterurl} alt="film" />
       </div>
       <div className="footer-third-informa">
         <p>
-          {props.title}
-          {props.weekday} <br /> Quinta-feira - {props.hour}
+          {title} <br />
+          {weekday} - {hour}
         </p>
       </div>
     </div>
@@ -78,30 +78,23 @@ const ThirdScreen = () => {
     });
   }, []);
 
-
-
-
-
+  console.log(objectResponse2.day?.weekday)
 
   const reserveSeat = (e) => {
     e.preventDefault();
     let dataClient = {};
 
-    let arrayIdSelected = seats
-      .filter((seat) => {
-        return seat.isAvailable === "reservation-selected";
-      })
-      
+    let arrayIdSelected = seats.filter((seat) => {
+      return seat.isAvailable === "reservation-selected";
+    });
+
     let chairs = arrayIdSelected.map((chair) => {
-      return chair.name
-    })  
+      return chair.name;
+    });
 
     let arrayIdFinal = arrayIdSelected.map((seat) => {
       return seat.id;
-    })
-      
-
-
+    });
 
     dataClient = {
       ids: arrayIdFinal,
@@ -113,12 +106,11 @@ const ThirdScreen = () => {
       filmDate: objectResponse2.day.date,
     };
 
-
     const send = axios.post(
       "https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many",
       dataClient
     );
-    send.then(navigate("/sucesso", {state: dataClient}));
+    send.then(navigate("/sucesso", { state: dataClient }));
   };
 
   //Component UI
@@ -188,6 +180,7 @@ const ThirdScreen = () => {
 
       <FooterThird
         title={objectResponse.title}
+        weekday={objectResponse2.day?.weekday}
         posterurl={objectResponse.posterURL}
         hour={objectResponse2.name}
       />

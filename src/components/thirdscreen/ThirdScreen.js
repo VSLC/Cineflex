@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const FooterThird = ({ title,weekday, hour, posterurl }) => {
+const FooterThird = ({ title, weekday, hour, posterurl }) => {
   return (
     <div className="footer-third-page">
       <div className="footer-poster">
@@ -78,7 +78,7 @@ const ThirdScreen = () => {
     });
   }, []);
 
-  console.log(objectResponse2.day?.weekday)
+  console.log(objectResponse2.day?.weekday);
 
   const reserveSeat = (e) => {
     e.preventDefault();

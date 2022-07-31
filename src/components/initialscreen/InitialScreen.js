@@ -6,9 +6,9 @@ import SecondScreen from "../secondscreen/SecondScreen";
 import "./style.css";
 const Poster = ({ src, id }) => {
   return (
-    <div class="film-container">
+    <div className="film-container">
       <Link to={`sessoes/:${id}`}>
-        <div class="poster">
+        <div className="poster">
           <img src={src} alt="film" />
         </div>
       </Link>
@@ -32,12 +32,12 @@ const InitialScreen = () => {
   // Component UI
   return (
     <>
-      <div class="main-page">
-        <div class="initial-message">
+      <div className="main-page">
+        <div className="initial-message">
           <h1>Selecione o filme</h1>
         </div>
-        <div class="films">
-          {films.map((element,index) => (
+        <div className="films">
+          {films.map((element, index) => (
             <Poster key={index} src={element.posterURL} id={element.id} />
           ))}
         </div>

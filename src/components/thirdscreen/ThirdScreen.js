@@ -149,7 +149,7 @@ const ThirdScreen = () => {
       </div>
       <div className="reservation-form">
         <form className="reservation-form-item" onSubmit={reserveSeat}>
-          <label for="name">Nome do comprador:</label>
+          <label htmlFor="name">Nome do comprador:</label>
           <input
             type="text"
             value={name}
@@ -160,7 +160,7 @@ const ThirdScreen = () => {
             required
           />
 
-          <label for="name">CPF do comprador:</label>
+          <label htmlFor="cpf">CPF do comprador:</label>
           <input
             type="text"
             value={cpf}

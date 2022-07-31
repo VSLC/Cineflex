@@ -5,8 +5,8 @@ import { useParams, Link } from "react-router-dom";
 
 const Footer = ({ title, src }) => {
   return (
-    <div class="footer">
-      <div class="footer-poster">
+    <div className="footer">
+      <div className="footer-poster">
         <img src={src} alt="film" />
       </div>
       <p>{title}</p>
@@ -14,16 +14,16 @@ const Footer = ({ title, src }) => {
   );
 };
 
-const Hours = ({ weekday, date, showtimes,idSessao }) => {
+const Hours = ({ weekday, date, showtimes, idSessao }) => {
   return (
-    <div class="hours-poster">
+    <div className="hours-poster">
       <h1>
         {weekday} - {date}
       </h1>
-      <div class="hour-box">
+      <div className="hour-box">
         {showtimes.map((element) => (
           <Link to={`/assentos/${element.id}`}>
-            <button class="hour-box-button" key={element.id}>
+            <button className="hour-box-button" key={element.id}>
               {element.name}
             </button>
           </Link>
@@ -51,28 +51,23 @@ const SecondScreen = (props) => {
     });
   }, []);
 
-
   return (
-    <div class="second-page">
-      <div class="initial-message">
+    <div className="second-page">
+      <div className="initial-message">
         <h1>Selecione o horário</h1>
       </div>
-      <div class="hours">
-        {days.map(
-          (element) => (
-            (
-              <Hours
-                weekday={element.weekday}
-                date={element.date}
-                showtimes={element.showtimes}
-              />
-            )
-          )
-        )}
+      <div className="hours">
+        {days.map((element, index) => (
+          <Hours
+            key={index}
+            weekday={element.weekday}
+            date={element.date}
+            showtimes={element.showtimes}
+          />
+        ))}
         <Footer title={footer.title} src={footer.posterURL} />
       </div>
     </div>
-
   );
 };
 

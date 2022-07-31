@@ -15,7 +15,7 @@ const App = () => {
                     <Route path="/" element={<InitialScreen />} />
                     <Route path="/sessoes/:idFilme" element={<SecondScreen />} />
                     <Route path="/assentos/:idSessao" element={<ThirdScreen />} />
-                    <Route path="/sucess" element={<FourthScreen />} />
+                    <Route path="/sucesso" element={<FourthScreen />} />
                 </Routes>
 
             </BrowserRouter>

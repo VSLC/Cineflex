@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
+import "./style.css";
 import axios from "axios";
+import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import SecondScreen from "../secondscreen/SecondScreen";
 
 import "./style.css";
 const Poster = ({ src, id }) => {

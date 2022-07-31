@@ -81,6 +81,8 @@ const ThirdScreen = () => {
 
 
 
+
+
   const reserveSeat = (e) => {
     e.preventDefault();
     let dataClient = {};
@@ -89,15 +91,23 @@ const ThirdScreen = () => {
       .filter((seat) => {
         return seat.isAvailable === "reservation-selected";
       })
-      .map((seat) => {
-        return seat.id;
-      });
+      
+    let chairs = arrayIdSelected.map((chair) => {
+      return chair.name
+    })  
+
+    let arrayIdFinal = arrayIdSelected.map((seat) => {
+      return seat.id;
+    })
+      
+
 
 
     dataClient = {
-      ids: arrayIdSelected,
+      ids: arrayIdFinal,
       name: name,
       cpf: cpf,
+      filmSeats: chairs,
       filmName: objectResponse.title,
       filmHour: objectResponse2.name,
       filmDate: objectResponse2.day.date,
@@ -108,7 +118,7 @@ const ThirdScreen = () => {
       "https://mock-api.driven.com.br/api/v7/cineflex/seats/book-many",
       dataClient
     );
-    send.then(navigate("/sucesso", { state: dataClient }));
+    send.then(navigate("/sucesso", {state: dataClient}));
   };
 
   //Component UI

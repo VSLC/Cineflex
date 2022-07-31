@@ -3,7 +3,7 @@ import { Link,useLocation } from "react-router-dom";
 
 const FourthScreen = () => {
   const {state} = useLocation();
-  const {name,cpf,filmName,filmHour,filmDate} = state
+  const {name,cpf,filmSeats,filmName,filmHour,filmDate} = state
   console.log(state)
   return (
     <div className="fourth-screen">
@@ -21,8 +21,9 @@ const FourthScreen = () => {
 
       <div className="tickets">
         <h2> Ingressos</h2>
-        <p>Assento 15</p>
-        <p>Assento 16</p>
+        {filmSeats.map((seat)=> {
+          return <p>Assento {seat}</p>
+        })}
       </div>
 
       <div className="buyers">

@@ -1,9 +1,8 @@
 import "./style.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-import "./style.css";
 const Poster = ({ src, id }) => {
   return (
     <div className="film-container">
